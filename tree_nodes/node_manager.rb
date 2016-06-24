@@ -19,19 +19,23 @@ class NodeManager
 		# that are equal to the TreeNode 
 		# by adding the value of the current node to tree_level_to_modify node
 
-		# access tree_node children
+		# access tree_node children at tree_level_modify
 		# compare tree_node child.string with node.string
-		# if same, save location of tree level to = tree_level_to_modify
-		# access integer_value of tree_node child and access int_value of node
+		# if same access integer_value in tree_node child and access integer_value of node
 		# add them together
+		# move one level down
+		# repeat
 		
 
-		# check how to access nested array 
-		puts @tree_node.children[tree_level_to_modify]
-		if @tree_node.children[tree_level_to_modify].string_key == node.string_key
-			@tree_node.children[tree_level_to_modify].integer_value += node.integer_value
-			puts @tree_node
+		# check how to access nested array
+		child = 0
+		until @tree_node.children[child].empty? 
+			if @tree_node.children[child].string_key == node.children[tree_level_to_modify].string_key
+				@tree_node.children[child].integer_value += node.integer_value
+				child += 1
+			end
 		end
+		@tree_node
 	end
 
 	# def remove(node, tree_level_to_modify)
